@@ -16,6 +16,20 @@
   <body>
     <h2>Save It</h2>
     <textarea type="text" placeholder="Write Something here.."></textarea>
-    <button>Save It</button>
+    <button onclick="save()">Save It</button>
+    <script>
+      const $textarea = document.querySelector('textarea');
+      function save() {
+        const baseUrl = 'https://api.keyvalue.xyz/decb9ea3/savedInfo';
+        const info = $textarea.value;
+        console.log(info);
+        const apiUrl = `${baseUrl}/${info}`
+        fetch(apiUrl, {
+          method: 'POST'
+        }).then(() => {
+          alert('Saved');
+        })
+      }
+    </script>
   </body>
 </html>
